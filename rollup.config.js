@@ -37,7 +37,7 @@ const server = {
 		sourcemap: true,
 		format: 'cjs',
 		name: 'app',
-		file: 'public/build/server/ssr-bundle.js'
+		file: 'public/build/server/bundle.js'
 	},
 	plugins: [
 		svelte({
@@ -93,7 +93,7 @@ const client = {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/client/client-bundle.js'
+		file: 'public/build/client/bundle.js'
 	},
 	plugins: [
 		svelte({

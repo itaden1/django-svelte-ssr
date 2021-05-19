@@ -1,7 +1,7 @@
 require('svelte/register');
 const express = require('express');
 
-const SvelteApp = require('./public/build/server/ssr-bundle.js');
+const SvelteApp = require('./public/build/server/bundle.js');
 
 const server = express()
 const PORT = 3000;
