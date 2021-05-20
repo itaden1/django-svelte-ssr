@@ -32,12 +32,12 @@ function serve() {
 
 
 const server = {
-	input: 'src/App.svelte',
+	input: 'frontend/src/App.svelte',
 	output: {
 		sourcemap: true,
 		format: 'cjs',
 		name: 'app',
-		file: 'public/build/server/bundle.js'
+		file: 'node-server/app/bundle.js'
 	},
 	plugins: [
 		svelte({
@@ -88,7 +88,7 @@ const server = {
 };
 
 const client = {
-	input: 'src/main.ts',
+	input: 'frontend/src/main.ts',
 	output: {
 		sourcemap: true,
 		format: 'iife',
