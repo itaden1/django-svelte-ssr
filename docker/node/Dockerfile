@@ -1,14 +1,15 @@
 FROM node:12.18.1
 
+RUN mkdir app
 WORKDIR /app
 
 RUN npm install yarn -G
 
-COPY render-server/package.json package.json
-COPY render-server/yarn.lock yarn.lock
+COPY package.json package.json
+COPY yarn.lock yarn.lock
 
 RUN yarn install
 
-COPY render-server/build .
+COPY . .
 
 CMD ["yarn", "start"]

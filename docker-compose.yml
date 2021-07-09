@@ -1,0 +1,39 @@
+version: "3.9"
+   
+secrets:
+  django_secrets:
+    file: ./docker/secrets/django_secrets.json
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    secrets:
+      - django_secrets
+    build:
+      context: ./backend 
+      dockerfile: ../docker/backend/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - renderserver
+  renderserver:
+    build:
+      context: ./render-server
+      dockerfile: ../docker/node/Dockerfile
+    command: yarn start
+    volumes:
+      - .:/renderserver
+    ports:
+      - "3000:3000"
+      
